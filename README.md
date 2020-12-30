@@ -1,4 +1,4 @@
 ## About Oliver Huang
 
-#####Education
-######University of Toronto St.George
+##### Education
+###### University of Toronto St.George
