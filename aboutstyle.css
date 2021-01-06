@@ -52,7 +52,6 @@ ul{
 .box li{
   display: inline-block;
   margin: 6px;
-  list-style: none;
 }
 .box li a{
   color: white;
