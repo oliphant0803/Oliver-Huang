@@ -1,93 +1,633 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <script src="https://use.fontawesome.com/d1341f9b7a.js"></script>
-    <link rel="stylesheet" href="style.css">
-    <title>Personal WebSite</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-* {box-sizing: border-box;}
+<html lang="en">
 
-body { 
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-}
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-.header {
-  overflow: hidden;
-  background-color: #f2a7a7;
-  padding: 20px 10px;
-}
+  <title>Oliver Huang</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
 
-.header a {
-  float: left;
-  color: black;
-  text-align: center;
-  padding: 12px;
-  text-decoration: none;
-  font-size: 18px; 
-  line-height: 25px;
-  border-radius: 4px;
-}
-
-.header a.logo {
-  font-size: 25px;
-  font-weight: bold;
-}
-
-.header a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-.header a.active {
-  background-color: dodgerblue;
-  color: white;
-}
-
-.header-right {
-  float: right;
-}
-
-@media screen and (max-width: 500px) {
-  .header a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-  
-  .header-right {
-    float: none;
-  }
-}
-</style>
+  <link href="assets/img/logo.png" rel="icon">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="index.css" rel="stylesheet">
 </head>
+
 <body>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
 
-<div class="header">
-  <a href="index.html" class="logo">Oliver Huang</a>
-  <div class="header-right">
-    <a class="active" href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="awards.html">Awards</a>
-    <a href="interests.html">Interests</a>
-  </div>
-</div>
-  <body>
-<div class="box">
-  <img src="pf.jpg" alt="" class="box-img">
-  <h1>Haoze Huang</h1>
-<h5>Student - University of Toronto</h5>
-<p>
-Energetic programmer who is looking to apply advanced abilities mainly in computer science and related education to take on a dynamic role 
-  with potential to make real-work contributions while further developing acquired academic and communications skills.</p>
-<ul>
-<li><a href="https://www.facebook.com/profile.php?id=100009553142409&viewas=100000686899395"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
-<li><a href="https://www.linkedin.com/in/haoze-huang-2398661aa/"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
-<li><a href="https://github.com/oliphant0803"><i class="fa fa-github-square" aria-hidden="true"></i></a></li>
-</ul>
-</div>
+  <header id="header">
+    <div class="d-flex flex-column">
+
+      <div class="profile">
+        <img src="assets/img/HaozeHuang.png" alt="" class="img-fluid rounded-circle">
+        <h1 class="text-light"><a href="index.html">Haoze Huang</a></h1>
+        <div class="social-links mt-3 text-center">
+          <a href="https://github.com/oliphant0803" class="github"><i class="bx bxl-github"></i></a>
+          <a href="https://www.linkedin.com/in/haoze-huang-2398661aa/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+          <a href="https://www.facebook.com/profile.php?id=100009553142409" class="facebook"><i class="bx bxl-facebook"></i></a>
+          <a href="https://www.instagram.com/oli.huang/" class="instagram"><i class="bx bxl-instagram"></i></a>
+        </div>
+      </div>
+
+      <nav id="navbar" class="nav-menu navbar">
+        <ul>
+          <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
+          <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
+          <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
+          <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Projects</span></a></li>
+          <li><a href="#courses" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Courses</span></a></li>
+          <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex flex-column  align-items-center">
+    <div class="hero-container" data-aos="fade-in">
+      <h1>This is Oliver</h1>
+      <h1>A.K.A:  H2O</h1>
+      <p>I'm a <span class="typed" data-typed-items="Student, Developer"></span></p>
+    </div>
+  </section>
+
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>About</h2>
+          <p>Hi there! Welcome to my site! I am a second year student at the University of Toronto specialising in Computer Science and Statistics. I am a driven and ambitious student interested in Data Science, Artificial Intelligence, Machine Learning and Database Development! 
+             I am motivated searching for a summer internship to take on a dynamic role with
+            potential to make real-work contributions while further developing
+            acquired academic and communications skills.
+            </p>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4" data-aos="fade-right">
+            <img src="assets/img/HaozeHuang.png" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
+            <div class="row">
+              <div class="col-lg-6">
+                <ul>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>August 2001</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>Bachelor of Science</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Disciplines</strong> <span>Computer Science Specialist & Statistical Science Major</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>Toronto, ON</span></li>
+                </ul>
+              </div>
+              <div class="col-lg-6">
+                <ul>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>20</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span>www.example.com</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Languages:</strong> <span>Mandarin (fluent), English (fluent), German (novice)</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Interests:</strong> <span>Lego, Chess, Puzzle</span></li>
+                </ul>
+              </div>
+            </div>
+            <h3> More about Education </h3>
+            <p></p>
+            <div class = "row">
+            <div class="col-lg-3">
+              <img src="assets/img/university-of-toronto-logo.jpg" class="img-fluid rounded-circle" alt="">
+            </div>
+            <div class="col-lg-9">
+              <ul>
+                <li><i class="bi bi-award-fill"></i> <strong>School:</strong> <span>University of Toronto St.George</span></li>
+                <li><i class="bi bi-award-fill"></i> <strong>Focus:</strong> <span>Artificial Intelligence, Computer System</span></li>
+                <li><i class="bi bi-award-fill"></i> <strong>cGPA:</strong> <span>3.87/4.0</span></li>
+                <li><i class="bi bi-award-fill"></i> <strong>Dean's List:</strong> <span>2019F-2020S</span></li>
+                <li><i class="bi bi-award-fill"></i> <strong>Accomplishments:</strong> <span>GPA 4.0/4.0 in all CSC and MAT courses</span></li>
+              </ul>
+            </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======= Skills Section ======= -->
+    <section id="skills" class="skills section-bg">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Technical Skills</h2>
+        </div>
+
+        <div class="row skills-content">
+
+          <div class="col-lg-6" data-aos="fade-up">
+
+            <div class="progress">
+              <span class="skill">Java <i class="val">Since 2017</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+
+            <div class="progress">
+              <span class="skill">Python <i class="val">Since 2018</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+
+            <div class="progress">
+              <span class="skill"> SQL <i class="val">Since 2020</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+
+            <div class="progress">
+              <span class="skill"> C <i class="val">Since 2019</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+
+            <div class="progress">
+              <span class="skill">JavaScript <i class="val">Since 2021</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+
+            
+
+          </div>
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+
+            <div class="progress">
+              <span class="skill">HTML <i class="val">Since 2017</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+
+            <div class="progress">
+              <span class="skill">CSS <i class="val">Since 2017</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+
+            <div class="progress">
+              <span class="skill"> Git/Github <i class="val">Since 2019</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+
+            <div class="progress">
+              <span class="skill">R <i class="val">Since 2019</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+
+            <div class="progress">
+              <span class="skill">Unix <i class="val">Since 2021</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======= Resume Section ======= -->
+    <section id="resume" class="resume">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Resume</h2>
+          <p>Driven computer science student interested in Data Science, Software Development, and Machine Learning</p>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6" data-aos="fade-up">
+            <h3 class="resume-title">Experience</h3>
+            <div class="resume-item">
+              <h4>Web Developer - Remote</h4>
+              <h5>2021 - Present</h5>
+              <p><em>Freelance as a team of 12 </em></p>
+              <ul>
+                <li>Developed front-end features for 5 responsive webpages by
+                  working in a team of 12 to code navbar, animation, and other
+                  features by using Bootstrap.</li>
+                <li>Built 5 personalized eCommerce webpages in 2 months with
+                  designs, contents, and functionalities by using HTML, CSS, and
+                  JavaScript.
+                  </li>
+              </ul>
+            </div>
+            <div class="resume-item">
+              <h4>Mathematics Teaching Assistant - Summer Intern</h4>
+              <h5>2018-05 – 2020-09</h5>
+              <p><em>Stepping Stone Advertising, New York, NY</em></p>
+              <ul>
+                <li>Developed 4 textbooks for high school level mathematics by
+                  constructing learning objectives, challenging problems, and
+                  their solutions as learning materials.
+                  </li>
+                <li>Assisted 2 International Mathematical Olympiad level
+                  instructors with material generation and lesson plan
+                  development.</li>
+              </ul>
+            </div>
+
+            <div class="resume-item">
+              <h4>Scout Manager</h4>
+              <h5>2017-09 – 2019-06</h5>
+              <p><em>LYNX Robotic Team - School Team</em></p>
+              <ul>
+                <li>Won 2 championships out of 120 teams as leader of a team
+                  which responsible for collecting, analyzing data of robots by
+                  making decisions on robots’ improvements on self-developed
+                  android application.          
+                  </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+            <h3 class="resume-title">Accomplishments</h3>
+            <div class="resume-item">
+              <h4>Extracurricular</h4>
+              <ul>
+                <li><h5>2018</h5>Regional championship in
+                  First Robotic Competition
+                  at Western University and
+                  Ryerson University (among
+                  120+ teams).
+                  </li>
+                <li><h5>2019</h5>Ranked top 10 in cyber
+                  hacking competition CTF
+                  (among 5000+ teams). </li>
+                <li><h5>2019</h5>Provincial qualification in
+                  ECOO-CS programing
+                  (among 200+ teams worldwide)</li>
+              </ul>
+            </div>
+            <div class="resume-item">
+              <h4>Acedemic Contests</h4>
+              <p><em>School champon and Honor Roll in Waterloo CEMC (around 25,000 participants per contest)</em></p>
+              <ul>
+                <li><h5>2016</h5>Pascal contest </li>
+                <li><h5>2016</h5>Fryer contest </li>
+                <li><h5>2017</h5>Cayley contest </li>
+                <li><h5>2017</h5>Galois contest </li>
+                <li><h5>2018</h5>Fermat contest </li>
+                <li><h5>2018</h5>Hypatia contest</li>
+                <li><h5>2019</h5>Euclid contest </li>
+                <li><h5>2019</h5>Canadian Computing Olympiads </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Resume Section -->
+
+    <!-- ======= Portfolio Section ======= -->
+    <section id="portfolio" class="portfolio section-bg">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Projects</h2>
+          <p>Personal Projects</p>
+        </div>
+
+        <div class="row" data-aos="fade-up">
+          <div class="col-lg-12 d-flex justify-content-center">
+            <ul id="portfolio-flters">
+              <li data-filter="*" class="filter-active">All</li>
+              <li data-filter=".filter-app">App</li>
+              <li data-filter=".filter-web">Web</li>
+              <li data-filter=".filter-hack">Hackthon</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <div class="portfolio-wrap">
+              <img src="assets/projects/project1.png" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="assets/projects/project1.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Personal Website"><i class="bx bx-plus"></i></a>
+                <a href="https://oliphant0803.github.io/Oliver-Huang/index.html" title="More Details"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <div class="portfolio-wrap">
+              <img src="assets/projects/project2.png" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="assets/projects/project2.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Animal Crossing"><i class="bx bx-plus"></i></a>
+                <a href="https://oliphant0803.github.io/animal_crossing/index.html" title="More Details"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="portfolio-wrap">
+              <img src="assets/projects/project3.png" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="assets/projects/Demo.mp4" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Doodle Jump"><i class="bx bx-plus"></i></a>
+                <a href="https://github.com/oliphant0803/DoodleJump" title="More Details"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-hack">
+            <div class="portfolio-wrap">
+              <img src="assets/projects/project5.png" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="assets/projects/project5.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="UofTHack VII Connectivity"><i class="bx bx-plus"></i></a>
+                <a href="https://devpost.com/submit-to/12061-uofthacks-viii/manage/submissions" title="More Details"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="portfolio-wrap">
+              <img src="assets/projects/project4.png" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="assets/projects/FinalProject.mp4" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Java Event App"><i class="bx bx-plus"></i></a>
+                <a href="https://github.com/oliphant0803/CSC207_Phase2" title="More Details"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+        <!-- ======= Courses Section ======= -->
+        <section id="courses" class="courses section-bg">
+          <div class="container">
+    
+            <div class="section-title">
+              <h3>Courses Taken</h2>
+              <p>A list of the <strong>STEM courses</strong> I have taken so far at the University of Toronto <a href="transcript.html">View Transcript</a></p>
+            </div>
+            <h3> Second Year </h3>
+            <div class="testimonials-slider swiper-container" data-aos="fade-up" data-aos-delay="100">
+              <div class="swiper-wrapper">
+    
+                <div class="swiper-slide">
+                  <div class="testimonial-item" data-aos="fade-up">
+                    <p>
+                      Software techniques in a Unix-style environment, using scripting languages and a machine-oriented programming language (typically C). Core topics: creating and using software tools, pipes and filters, file processing, shell programming, processes, system calls, signals, basic network programming.
+                    </p>
+                    <h3>CSC209 Software Tools and Systems Programing</h3>
+                    <h4>Karen Reid</h4>
+                  </div>
+                </div>
+    
+                <div class="swiper-slide">
+                  <div class="testimonial-item" data-aos="fade-up" data-aos-delay="100">
+                    <p>
+                      Algorithm analysis: worst-case, average-case, and amortized complexity. Expected worst-case complexity, randomized quicksort and selection. Standard abstract data types, such as graphs, dictionaries, priority queues, and disjoint sets. A variety of data structures for implementing these abstract data types. 
+                    </p>
+                    <h3>CSC263 Data Structures and Analysis</h3>
+                    <h4>Michelle Craig</h4>
+                  </div>
+                </div>
+    
+                <div class="swiper-slide">
+                  <div class="testimonial-item" data-aos="fade-up" data-aos-delay="200">
+                    <p>
+                      Computer structures, machine languages, instruction execution, addressing techniques, and digital representation of data. Computer system organization, memory storage devices, and microprogramming. Block diagram circuit realizations of memory, control and arithmetic functions. 
+                    </p>
+                    <h3>CSC258 Computer Organization</h3>
+                    <h4>Steve Engels</h4>
+                  </div>
+                </div>
+    
+                <div class="swiper-slide">
+                  <div class="testimonial-item" data-aos="fade-up" data-aos-delay="300">
+                    <p>
+                      An introduction to software design and development concepts, methods, and tools using a statically-typed object-oriented programming language such as Java. Topics from: version control, unit testing, refactoring, object-oriented design and development, design patterns, advanced IDE usage, regular expressions, and reflection. 
+                    </p>
+                    <h3>CSC207 Software Design</h3>
+                    <h4>Jonathan Calver</h4>
+                  </div>
+                </div>
+    
+                <div class="swiper-slide">
+                  <div class="testimonial-item" data-aos="fade-up" data-aos-delay="400">
+                    <p>
+                      The application of logic and proof techniques to Computer Science. Mathematical induction; correctness proofs for iterative and recursive algorithms; recurrence equations and their solutions; introduction to automata and formal languages.
+                    </p>
+                    <h3>CSC236 Introduction to the Theory of Computation</h3>
+                    <h4>Francios Pitt</h4>
+                  </div>
+                </div>
+
+                <div class="swiper-slide">
+                  <div class="testimonial-item" data-aos="fade-up" data-aos-delay="500">
+                    <p>
+                      A mathematically rigorous introduction to probability, with applications chosen to introduce concepts of statistical inference. Probability and expectation, discrete and continuous random variables and vectors, distribution and density functions, the law of large numbers. The binomial, geometric, Poisson, and normal distributions.
+                    </p>
+                    <h3>STA257 Probability and Statistics I</h3>
+                    <h4>Katherine Daignault</h4>
+                  </div>
+                </div>
+
+                <div class="swiper-slide">
+                  <div class="testimonial-item" data-aos="fade-up" data-aos-delay="600">
+                    <p>
+                      A rigourous introduction to the theory of statistical inference and to statistical practice. Statistical models, parameters, and samples. Estimators for parameters, sampling distributions for estimators, and the properties of consistency, bias, and variance. The likelihood function and the maximum likelihood estimator. 
+                    </p>
+                    <h3>STA261 Probability and Statistics II</h3>
+                    <h4>Shahriar Shams</h4>
+                  </div>
+                </div>
+
+    
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+    
+          </div>
+
+          <div class="container">
+    
+            <h3> First Year</h3>
+    
+            <div class="testimonials-slider swiper-container" data-aos="fade-up" data-aos-delay="100">
+              <div class="swiper-wrapper">
+    
+                <div class="swiper-slide">
+                  <div class="testimonial-item" data-aos="fade-up">
+                    <p>
+                      A conceptual approach for students with a serious interest in mathematics. Attention is given to computational aspects as well as theoretical foundations and problem solving techniques. Limits and continuity, mean value theorem, inverse function theorem, differentiation, integration, fundamental theorem of calculus, elementary transcendental function.
+                    </p>
+                    <h3>MAT137 Calculus with Proofs</h3>
+                    <h4>Asif Zaman</h4>
+                  </div>
+                </div>
+                
+                <div class="swiper-slide">
+                  <div class="testimonial-item" data-aos="fade-up" data-aos-delay="100">
+                    <p>
+                      Introduction to abstraction and rigour. Informal introduction to logical notation and reasoning. Understanding, using and developing precise expressions of mathematical ideas, including definitions and theorems. Structuring proofs to improve presentation and comprehension. General problem-solving techniques.
+                    </p>
+                    
+                    <h3>CSC148: Introduction to Computer Science </h3>
+                    <h4>Mario Badr</h4>
+                  </div>
+                </div>
+
+                <div class="swiper-slide">
+                  <div class="testimonial-item" data-aos="fade-up" data-aos-delay="200">
+                    <p>
+                      Introduction to abstraction and rigour. Informal introduction to logical notation and reasoning. Understanding, using and developing precise expressions of mathematical ideas, including definitions and theorems. Structuring proofs to improve presentation and comprehension. General problem-solving techniques. Running time analysis of iterative programs. 
+                    </p>
+                    <h3>CSC165 Mathematical Expression and Reasoning for Computer Science</h3>
+                    <h4>Jonathan Calver</h4>
+                  </div>
+                </div>
+
+                <div class="swiper-slide">
+                  <div class="testimonial-item" data-aos="fade-up" data-aos-delay="300">
+                    <p>
+                      Programming in a language such as Python. Elementary data types, lists, maps. Program structure: control flow, functions, classes, objects, methods. Algorithms and problem solving. Searching, sorting, and complexity. Unit testing. No prior programming experience required.
+                    </p>
+                    <h3>CSC108H1: Introduction to Computer Programming</h3>
+                    <h4>Mario Badr</h4>
+                  </div>
+                </div>
+
+                <div class="swiper-slide">
+                  <div class="testimonial-item" data-aos="fade-up" data-aos-delay="400">
+                    <p>
+                      Systems of linear equations, matrix algebra, real vector spaces, subspaces, span, linear dependence and independence, bases, rank, inner products, orthogonality, orthogonal complements, Gram-Schmidt, linear transformations, determinants, Cramer’s rule, eigenvalues, eigenvectors, eigenspaces, diagonalization.
+                    </p>
+                    <h3>MAT223 Linear Algebra I</h3>
+                    <h4>Jason Siefkin</h4>
+                  </div>
+                </div>
+    
+                <div class="swiper-slide">
+                  <div class="testimonial-item" data-aos="fade-up" data-aos-delay="500">
+                    <p>
+                      Parametric equations and polar coordinates. Vectors, vector functions and space curves. Differential and integral calculus of functions of several variables. Line integrals and surface integrals and classic vector calculus theorems. Examples from life sciences and physical science applications.
+                    </p>
+                    <h3>MAT235 Calculus II</h3>
+                    <h4>Nara Jung</h4>
+                  </div>
+                </div>
+    
+                <div class="swiper-slide">
+                  <div class="testimonial-item" data-aos="fade-up" data-aos-delay="600">
+                    <p>
+                      This course, intended for students considering a program in Statistical Sciences, discusses the crucial role played by statistical reasoning in solving challenging problems from natural science, social science, technology, health care, and public policy, using a combination of logical thinking, mathematics, computer simulation.
+                    </p>
+                    <h3>STA130 An Introduction to Statistical Reasoning and Data Science</h3>
+                    <h4>Nathelie Moon</h4>
+                  </div>
+                </div>
+    
+               
+    
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+    
+          </div>
+        </section>
+
+
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Contact</h2>
+          <h3>Feel free to reach me out!</h3>
+        </div>
+
+        <div class="row" data-aos="fade-in">
+
+          <div class="col-lg-12 d-flex align-items-stretch">
+            <div class="info row">
+              <div class="col-lg-4 address">
+                <i class="bi bi-geo-alt"></i>
+                <h4>Location:</h4>
+                <p>40 Willocks St #1007, Toronto, ON</p>
+              </div>
+
+              <div class="col-lg-4 email">
+                <i class="bi bi-envelope"></i>
+                <h4>Email:</h4>
+                <p>oliver.huang@mail.utoronto.ca</p>
+              </div>
+
+              <div class="col-lg-4 phone">
+                <i class="bi bi-phone"></i>
+                <h4>Call:</h4>
+                <p>+1 416-838-7676</p>
+              </div>
+
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2886.3571501317897!2d-79.40306348450197!3d43.66154147912094!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b34bf97c503d9%3A0x4cfd1e9f42b137e5!2sUniversity%20of%20Toronto!5e0!3m2!1sen!2sca!4v1613853764543!5m2!1sen!2sca" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>
+            </div>
+
+          </div>
+
+          
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">
+        <a href="https://github.com/oliphant0803"><strong class = "text-white-50">@<span>oliphant0803</span></strong></a>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/purecounter/purecounter.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/typed.js/typed.min.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="main.js"></script>
+
 </body>
-</html>
 
+</html>
