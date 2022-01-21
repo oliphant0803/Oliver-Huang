@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Digit Recognition using Neural Network and K-Nearest Neighbours</title>
+        <link rel="icon" href="../assets/img/logo.png" />
+        <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+        <link href="../styles/blog.css" rel="stylesheet" />
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="../blog.html">Back</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+        <header class="masthead" style="background-image: url('../assets/img/blog/bg.png')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="post-heading">
+                            <h1>Digit Recognition using Neural Network and K-Nearest Neighbours</h1>
+                            <h2 class="subheading">Comparison of Two Machine Learning Algorithms on MNIST Handwritten Digits</h2>
+                            <span class="meta">
+                                Posted by
+                                <a href="#!">Oliver Huang</a>
+                                on March 24, 2022 
+                                (8 mins read)
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Post Content-->
+
+        <article class="mb-4">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <a href="#!"><img class="img-fluid image-center" src="../assets/img/blog/knn1.png" alt="..." /></a>
+                        <span class="caption text-muted">Handwritten digits taken from MNIST dataset (Image by <a href="https://medium.com/analytics-vidhya/knn-vs-decision-tree-vs-random-forest-for-handwritten-digit-recognition-470e864c75bc">Kashish</a>)</span>
+                        
+                        <p><span class="first-letter">T</span>hese are numbers from 0 to 9. They are sloppily written and rendered at an extremly low resolution of 28 by 28 pixels. But your brain has no trouble recognizing them and I want you to take a
+                        moment to appreciate how crazy it is that brains can do this so effortlessly! For images labeled as <b>3</b>, eventhough the specific values of each pixel is very different from one image to the next.
+                        The particular light-sensitive cells in your eye that are firing when you see the <b>3</b> at the first column are very different from the <b>3s</b> firing at third column. But something in that crazy smart
+                        visual cortex of yours resolves these as representing the same idea while at the same time recognizing other images as their own distinct ideas. However, for computers to
+                        take in a grid of 28 by 28 pixels like these and outputs a single number between 0 and 9 telling you what it think the digit is, the task goes from comically trivial and dauntingly difficult.
+                        Unless you have been living under a rock, it is unnecessary to motivate the relevance and importance of machine learning algorithms to the present into the future.</p>
+
+                        <p>Today we are going to explore two popular learning algorithms on this particular task, to see how computers can classify handwritten digits not quite but almost as accurate as human eyes. 
+                        In this tutorial, dataset from Modified National Institute of Standards and Technology database (MNIST) will be used, it is the most popular dataset among machine learning, images in the form of 28*28 gray scale intensities of images representing an image along with the first column to be a label (0 to 9) for every image. Also, python libraries already contain this specific dataset, so it can be easily imported and start working with it. 
+                        </p>
+                        <p>
+                        For data learning models, seperating data into training and testing sets is an important part of evalutaing the model performance. After a model has been processed by using the training set, you test the model by making predictions against the test set. Because the data in the testing set already contains known values for the attribute that you want to predict, it is easy to determine whether the model's guesses are correct.
+                        </p>
+                        <p>
+                        MNIST is divided into two datasets: the training set has 60,000 examples of hand-written numerals, and the test set has 10,000. MNIST is a subset of a larger dataset available at the National Institute of Standards and Technology. All of its images are the same size, and within them, the digits are centered and size normalized.
+                        </p>
+
+                        <blockquote class="blockquote">MNIST dataset has is known as “Hello world” of Image classification. Every Machine Learning Engineer tackles this dataset sooner or later.</blockquote>                        
+                        
+                        <p>
+                        Open a python script where I have imported some necessary modules such as tensorflow, and from tensorflow I also imported keras which contains some convenient api to use
+                        handwritten dataset from keras libary.
+                        </p>
+
+                        <pre class="shadow-lg p-3 mb-5 bg-white rounded">
+                            <code>
+                              <span>import</span> tensorflow <span>as</span> tf
+                              <span>from</span> tensorflow <span>import</span> keras
+                              <span>import</span> matplotlib.pyplot <span>as</span> plt
+                              <span>%</span>matplotlib inline
+                              <span>import</span> numpy <span>as</span> np
+                            </code>
+                        </pre>
+                        <p>
+                        MNIST images can be load using the first line, and what this will do it it will load the train and test digits dataset into X_train, y_train, X_test, y_test. Where X contains the actual digits images, and y contains the label classification of each
+                        corresponding images. 
+                        </p>
+                        <p>
+                        Let's see how many samples we have. In X_train, we have 60,000 digits images, similarly in X_test we have 10,000 images. Now if you look at each individual sample that sample is a 28 by 28 pixel image and the weight represented in number is a simple
+                        two dimensional array.
+                        </p>
+                        <pre class="shadow-lg p-3 mb-5 bg-white rounded">
+                            <code>
+                              (X_train, y_train), (X_text, y_test) = keras.datasets.mnist.load_data()
+                              <span>len</span>(X_train)                             
+                              <span>len</span>(X_test)                              
+                              X_train[<span>0</span>].shape                    
+
+                                <span class="out">Output:</span>
+                                60000
+                                10000
+                                (28, 28)                        
+                              </code>
+                        </pre>
+                        <p>
+                        If you want to see how the images looks visually, you can use matplotlib library to plot the third training image (at index 2). Similarly, you can visuallize all the images by their indexes.
+                        </p>
+                        <pre class="shadow-lg p-3 mb-5 bg-white rounded">
+                            <code>                             
+                              plt.matshow(X_train[<span>2</span>])  
+
+                              <span class="out">Output:</span>
+                              <img src="../assets/img/blog/output1.png" />                     
+                            </code>
+                        </pre>
+                        <p>
+                        Your brain can easily recognize the third position is 4, now on the third position of y_train, we can see the image is classifies as 4, that is how computers will know if they classified the image into the correct <label for="" class=""></label> 
+                        </p>
+                        <p>
+                        If you look at y_train overall, it is containing a number between 0 to 9. The second line print the first 5 symbol and this is how it looks as python array.
+                        </p>
+                        <pre class="shadow-lg p-3 mb-5 bg-white rounded">
+                            <code>                             
+                              y_train[<span>2</span>]
+                              y_train[<span>:5</span>]
+
+                              <span class="out">Output:</span>
+                              4
+                              array([5, 0, 4, 1, 9], dtype=unit8)                     
+                            </code>
+                        </pre>
+                        
+                        
+                        <h2 class="section-heading">Neural Network</h2>
+                        <p><span class="first-letter">B</span>ased on nature, neural networks are the usual representation we make of the brain : neurons interconnected to other neurons which forms a network. 
+                        </p>
+                        <p>In terms of artificial neural networks, the network itself are put on layers, as shown below. A network have input layer, output layers, and may have many layers in between as hidden layers.</p>
+                        <p>A neuron (node) of the layer n can only be connected to neurons from layers n-1 and n+1. Each neurons recieve information from the last layer and send information to the next layer via activation functions</p>
+                        <p>The activation function usually serves to turn the total value calculated before to a number between 0 and 1</p>
+                        <a href="#!"><img class="img-fluid image-center" src="../assets/img/blog/nn2.png" alt="..." /></a>
+                        <span class="caption text-muted">Sigmoid function visualization (Image by <a href="https://medium.com/@toprak.mhmt/activation-functions-for-deep-learning-13d8b9b20e">Toprak</a>)</span>
+                        
+                        <p>In each layer, neurons take all values from connected neurons multiplied by their respective weight, add them, and apply an activation function. Then, the neuron is ready to send its new value to other neurons.
+                            Passing to the final layer, neurons outputs into classifications by the last value obtained by the network.
+                        </p>
+
+                        <a href="#!"><img class="img-fluid image-center" src="../assets/img/blog/nn1.png" alt="..." /></a>
+                        <p>We are going to flatten our dataset because we saw the presentation that we want to convert the 28 by 28 pixel image into a single dimensional array that will have
+                            784 elements in the code block below.
+                        </p>
+                        <pre class="shadow-lg p-3 mb-5 bg-white rounded">
+                            <code>    
+                              X_train = X_train / 255
+                              X_test = X_test / 255                         
+                              X_train_flattened = X_train.reshape(<span>len</span>(X_train), 28<span>*</span>28)  
+                              X_test_flattened = X_test.reshape(<span>len</span>(X_train), 28<span>*</span>28)                  
+                            </code>
+                        </pre>
+
+
+                        <p>We are going to create a simple neural network of input layer of 784 elements, and output layer with 10 elements. The way to create this in tensorflow is to use keras squential.
+                            Sequantial means having a stack of layers in my neural netwokr and since it is a stack it will accept every layer as one element. In keras.layers.Dense, you can define both input and output layers,
+                            dense means every neurons in one layer are connected with every other
+                            neuron in the second layer. Creating a dense layer as below with input layer 784 as shape, and output shape of 10. 
+                        </p>
+
+                        <p>In simple neural network, there is no hidden layers, you need to specify the activation function which is sigmoid for the last layer.
+                        </p>
+
+                        <p>After defning the neural network model, we need to compile it so in tensorflow and pass bunch of arguments. In this particular example, I am using 'adam' optimizer which let the model train efficiently when the backward
+                            propagation and training is going on. Having an optimizer will allow you to reach to global optima in efficient way. 
+                        </p>
+
+                        <p>
+                            Loss functions calculate crossentropy to show how the algorithm fit data in the first place. Tensorflow provides various loss function for training models 
+                            <a href="https://www.tensorflow.org/api_docs/python/tf/keras/losses">here</a>.<br>
+                            I choose to use 'sparse_categorical_crossentropy' for loss function is because it is for computing the crossentripy loss between labels and predictions.
+                        </p>
+
+                        <pre class="shadow-lg p-3 mb-5 bg-white rounded">
+                            <code>                             
+                              model = keras.Squential([
+                              &nbsp;&nbsp;&nbsp;keras.layers.Dense(<span>10</span>, input_shape(<span>784</span>,),actvation=<span>'sigmoid'</span>)
+                              ]) 
+                              
+                              model.compile(
+                                &nbsp;&nbsp;&nbsp;optimizer=<span>'adam'</span>, 
+                                &nbsp;&nbsp;&nbsp;loss=<span>'sparse_categorical_crossentropy'</span>
+                                &nbsp;&nbsp;&nbsp;metrics=[<span>'accuracy'</span>]
+                              )
+
+                              model.fit(X_train_flattened, y_train, epochs=<span>5</span>)
+
+                              <span class="out">Output:</span>
+                              Epoch 1/5
+                              3s 2ms/step - loss: 0.4830 - accuracy: 0.8767
+                              Epoch 2/5
+                              4s 2ms/step - loss: 0.3057 - accuracy: 0.9154
+                              Epoch 3/5
+                              4s 2ms/step - loss: 0.2857 - accuracy: 0.9212
+                              Epoch 4/5
+                              4s 2ms/step - loss: 0.2751 - accuracy: 0.9237
+                              Epoch 5/5
+                              4s 2ms/step - loss: 0.2682 - accuracy: 0.9260
+                            </code>
+                        </pre>
+
+                        <p>
+                            Now that the model finished training, before deploying a model to production, it is always necessary to evaluate the accuracy on a test dataset.
+                        </p>
+                        <p>
+                            For sample predictions, the first images on X_test is 7 recognized by human brain. Using the neural network model on the first image of testing set, the output is 7 as expected.
+                        </p>
+                        <pre class="shadow-lg p-3 mb-5 bg-white rounded">
+                            <code>                             
+                              plt.matshow(X_test[<span>0</span>])
+
+                              <span class="out">Output:</span>
+                              <img src="../assets/img/blog/output2.png" />   
+
+                              y_predicted = model.predict(X_test_flattened)
+                              np.argmax(y_predicted)
+                              
+                              <span class="out">Output:</span>
+                              7
+                            </code>
+                        </pre>
+
+                        <p>
+                            The simple neural network model looks pretty good with 92.68% accuracy on the testing dataset, and it takes less time for training.
+                        </p>
+                        <pre class="shadow-lg p-3 mb-5 bg-white rounded">
+                            <code>                             
+                              model.evaluate(X_test_flattned, y_test)
+
+                              <span class="out">Output:</span>
+                              accuracy: 0.9268
+                            </code>
+                        </pre>
+
+                        <p>Rectified Linear Unit (relu) is one of the most commonly used activation function in deep learning. 
+                            The function returns 0 if the input is negative, but for any positive input, it returns that value back.
+                            Increasing the number of hidden layers might improve the accuracy or might not, 
+                            it really depends on the complexity of the problem that you are trying to solve. In this case, adding one more hidden layer with rectified 
+                            linear unit activation function increaces the training accuracy, but also more time consuming as it takes longer time per step while learning.</p>
+ 
+                         <pre class="shadow-lg p-3 mb-5 bg-white rounded">
+                             <code>                             
+                               model = keras.Squential([
+                               &nbsp;&nbsp;&nbsp;keras.layers.Dense(<span>100</span>, input_shape(<span>784</span>,),actvation=<span>'relu'</span>)
+                               &nbsp;&nbsp;&nbsp;keras.layers.Dense(<span>10</span>, actvation=<span>'sigmoid'</span>)
+                               ]) 
+                               
+                               model.compile(
+                                 &nbsp;&nbsp;&nbsp;optimizer=<span>'adam'</span>, 
+                                 &nbsp;&nbsp;&nbsp;loss=<span>'sparse_categorical_crossentropy'</span>
+                                 &nbsp;&nbsp;&nbsp;metrics=[<span>'accuracy'</span>]
+                               )
+ 
+                               model.fit(X_train_flattened, y_train, epochs=<span>5</span>)
+ 
+                               <span class="out">Output:</span>
+                               Epoch 1/5
+                               5s 3ms/step - loss: 0.2874 - accuracy: 0.9198
+                               Epoch 2/5
+                               5s 2ms/step - loss: 0.1339 - accuracy: 0.9606
+                               Epoch 3/5
+                               5s 2ms/step - loss: 0.0956 - accuracy: 0.9717
+                               Epoch 4/5
+                               5s 3ms/step - loss: 0.0738 - accuracy: 0.9776
+                               Epoch 5/5
+                               5s 3ms/step - loss: 0.0586 - accuracy: 0.9819
+                             </code>
+                         </pre>
+                        
+                        <h2 class="section-heading">K-nearest Neighbors(KNN)</h2>
+
+                        <p><span class="first-letter">S</span>imilar data points typically exist close to each other, the kNN algorithm hinges on this assumption being true enough for the algorithm to be useful. kNN captures the idea of similarity using Euclidean distance between the image pixels for handwritten recognition.</p>
+                        <a href="#!"><img class="img-fluid image-center" src="../assets/img/blog/knn2.png" alt="..." /></a>
+                        <span class="caption text-muted">K-nearest neighbors visualization (Image by <a href="https://towardsdatascience.com/machine-learning-basics-with-the-k-nearest-neighbors-algorithm-6a6e71d01761#:~:text=Summary,that%20data%20in%20use%20grows.">Harrison</a>)</span>
+                        
+                        <p>First, compute the Euclidean distance between the test data point and all the training data.</p>
+                        <p>Euclidean distance is the square root of the sum of squared distance between two points.</p>
+                        <p>The Euclidean _distance function calculates the difference between the squares of the points and finally the square root of the difference .</p>
+                        <pre class="shadow-lg p-3 mb-5 bg-white rounded">
+                            <code>                             
+                              <span>def</span>  Euclidean_distance(row1, row2): 
+                              &nbsp;&nbsp;&nbsp; distance = 0
+                              &nbsp;&nbsp;&nbsp; <span>for</span> i <span>in range</span>(<span>len</span>(row1)-1):
+                              &nbsp;&nbsp;&nbsp; distance += (row1[<span>i</span>] - row2[<span>i</span>])<span>**</span>2
+                              &nbsp;&nbsp;&nbsp; <span>return</span> sqrt(distance)
+                            </code>
+                        </pre>
+                        
+                        
+                        
+                        <p>Sort the calculated distances in ascending order. And find the k neighbors with the cloest distance, the image will be classified by majority rule of its neighbors' labels </p>
+                        <p>In order to find the neighbors we need to first sort the distance in ascending order, np.argsort() is used to find the index of minimum distance .</p>
+                        <pre class="shadow-lg p-3 mb-5 bg-white rounded">
+                            <code>                             
+                              <span>def</span>  Get_neighbors(train, test_row, k): 
+                              &nbsp;&nbsp;&nbsp; distance = list()
+                              &nbsp;&nbsp;&nbsp; data = []
+                              &nbsp;&nbsp;&nbsp; <span>for</span> i <span>in</span> train:
+                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dist = Euclidean_distance(test_row, i)
+                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; distance.append(dist)
+                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; data.append(i)
+                              &nbsp;&nbsp;&nbsp; distance = np.array(distance)
+                              &nbsp;&nbsp;&nbsp; data = np.array(data)
+
+                              &nbsp;&nbsp;&nbsp;  <span class="comment">#finding the index of minimum distance</span>
+                              &nbsp;&nbsp;&nbsp;  index_dist = distance.argsort()
+
+                              &nbsp;&nbsp;&nbsp;  <span class="comment">#arranging data</span>
+                              &nbsp;&nbsp;&nbsp;  data = data[index_dist]
+
+                              &nbsp;&nbsp;&nbsp;  <span class="comment">#slicing k value</span>
+                              &nbsp;&nbsp;&nbsp;  neighbors = data[:k]
+
+                              &nbsp;&nbsp;&nbsp; <span>return</span> neighbors
+                            </code>
+                        </pre>
+
+                        <p>In this particular implementation, if k=4, for a image whose 4 neighbors are 8, 6, 5, 5 accordingly, the algorithm will output 5 as its classification</p>
+                        <pre class="shadow-lg p-3 mb-5 bg-white rounded">
+                            <code>                             
+                              <span>def</span> predict(train, test_row, k):
+                              &nbsp;&nbsp;&nbsp;neighbors = Get_Neighbors(train, test_row, k)
+                              &nbsp;&nbsp;&nbsp;classes = []
+                              &nbsp;&nbsp;&nbsp;<span>for</span> i <span>in</span> neighbors:
+                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;classes.append(i[-1])
+                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prediction = <span>max</span>(classes, key= classes.count)
+                              &nbsp;&nbsp;&nbsp;<span>return</span> prediction
+                            </code>
+                        </pre>
+
+                        <p>Accuracy is calculated by dividing the correctly classified samples count by total samples.</p>
+                        <pre class="shadow-lg p-3 mb-5 bg-white rounded">
+                            <code>                             
+                              <span>def</span> accuracy(y_true, y_pred):
+                              &nbsp;&nbsp;&nbsp; n_correct = 0
+                              &nbsp;&nbsp;&nbsp; <span>for</span> i <span>in range</span>(<span>len</span>(y_true)):
+                              &nbsp;&nbsp;&nbsp; <span>if</span> y_true[i] == y_pred[i]:
+                              &nbsp;&nbsp;&nbsp; n_correct += 1
+                              &nbsp;&nbsp;&nbsp; acc = n_correct/<span>len</span>(y_true)
+                              &nbsp;&nbsp;&nbsp; <span>return</span> acc
+                            </code>
+                        </pre>
+                        <p>After we have training and testing dataset already imported, storing true values and predicted values
+                            Use accuracy function above to calculate the accuracy score.
+                        </p>
+                        <p> 92.9% of the images is classied corretly to the true label using kNN with 4 nearest neighbors.
+                        </p>
+                        <pre class="shadow-lg p-3 mb-5 bg-white rounded">
+                            <code>                             
+                                y_pred=[]
+                                <span>for</span> i <span>in range</span>(<span>len</span>(X_train)):
+                                &nbsp;&nbsp;&nbsp;prediction = predict(X_test, X_test[i], 4)
+                                &nbsp;&nbsp;&nbsp;y_pred.append(prediction)
+                                <span class="comment"># Accuracy</span>
+                                accuracy(y_test, y_pred)
+
+                                <span class="out">Output:</span>
+                                accuracy: 0.929
+                            </code>
+                        </pre>
+
+                        <p>
+                        As we decrease the value of K to 1, our predictions become less stable. 
+                        Inversely, as we increase the value of K, our predictions become more stable due to majority voting/averaging, and thus, more likely to make more accurate predictions (up to a certain point). However, it may takes more predicting time as the algorithm will be examing more neighbors for each image.
+                        </p>
+                        <p>
+                            <i>Notes:</i>    In the general case of classification and regression, it is important to find the right K for learning data by trying several k-values and picking the one that works best.
+                        </p>
+
+                        <h2 class="section-heading">kNN vs Neural Network</h2>
+
+                        <ul class="list-group list-unstyled">
+                            <li>
+                                k-NN requires no training time, whereas training neural networks is rather time-intensive. However k-NN will probably take much longer at evaluation time, 
+                                especially if you have many data points and don’t resort to approximate search.
+                            </li>
+                            <li>
+                                k-NN is very simple and requires tuning only one hyperparameter (the value of k), 
+                                while neural net training involves many hyperparameters controlling the size and structure of the network and the optimization procedure.
+                            </li>
+                            <li>
+                                Neural networks have achieved the state of the art in more domains than k-NN. 
+                        (This doesn’t necessarily mean neural networks will work better on your particular problem, but empirically neural networks are effective in many settings.)
+                        There are more theoretical guarantees for k-NN than for neural nets, although as we know there is a large gap between the theoretical and 
+                        empirical performance of neural networks. (Aside: it is a good idea to carefully examine the assumptions made by theoretical work in machine learning, 
+                        to make sure that they are reasonable for the problem being approached.)
+                            </li>
+                            <li>
+                                Once a neural network is trained, the training data is no longer needed to produce new predictions. This is obviously not the case with k-NN.
+                            </li>
+                            <li>
+                                Once a neural network is trained on one task, its parameters can be used as a good initializer for another (similar) task. This is a form of transfer learning that cannot be achieved with k-NN.
+                            </li>
+                        </ul>
+
+                        <h2 class="section-heading">Conclusion</h2>
+                        <p>k-NN is simpler than neural nets. Only one hyperparameter (k) is searched while neural net can have millions hyperparameters while neural network is likely a blackbox, it’s not easy to track the behavior inside each layer while the theory of k-NN is clearly defined.
+                        </p>
+                        <blockquote class="blockquote">Each machine learning algorithm has a different inductive bias, so it's not always appropriate to use the same method over the others.</blockquote>
+                        <p>Both algorithms performed similar with the default hyperparameters (4 nearest neighbors, and 0 hidden layer neural net). However, by adding one hidden layer with relu activation, 
+                            more promissing training accruacy are shown. Therefore, in this particular example of handwritten digit recognition, neural network with one additional layer performs better. </p>
+                        <p>
+                             Images by
+                            <a href="https://towardsdatascience.com/machine-learning-basics-with-the-k-nearest-neighbors-algorithm-6a6e71d01761#:~:text=Summary,that%20data%20in%20use%20grows.">Harrison</a>
+                            &middot; 
+                            <a href="https://medium.com/analytics-vidhya/knn-vs-decision-tree-vs-random-forest-for-handwritten-digit-recognition-470e864c75bc">Kashish</a>
+                            &middot;
+                            <a href="https://medium.com/@toprak.mhmt/activation-functions-for-deep-learning-13d8b9b20e">Toprak</a>
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </article>
+        <!-- Footer-->
+        <footer class="border-top">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="small text-center text-muted fst-italic">Copyright &copy; Oliphant0803</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="js/post.js"></script>
+    </body>
+</html>
