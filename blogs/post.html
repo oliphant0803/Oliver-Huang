@@ -16,10 +16,6 @@
         <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
             <div class="container px-4 px-lg-5">
                 <a class="navbar-brand" href="../blog.html">Back</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    Menu
-                    <i class="fas fa-bars"></i>
-                </button>
             </div>
         </nav>
         <header class="masthead" style="background-image: url('../assets/img/blog/bg.png')">
@@ -49,10 +45,10 @@
                         <a href="#!"><img class="img-fluid image-center" src="../assets/img/blog/knn1.png" alt="..." /></a>
                         <span class="caption text-muted">Handwritten digits taken from MNIST dataset (Image by <a href="https://medium.com/analytics-vidhya/knn-vs-decision-tree-vs-random-forest-for-handwritten-digit-recognition-470e864c75bc">Kashish</a>)</span>
                         
-                        <p><span class="first-letter">T</span>hese are numbers from 0 to 9. They are sloppily written and rendered at an extremly low resolution of 28 by 28 pixels. But your brain has no trouble recognizing them and I want you to take a
-                        moment to appreciate how crazy it is that brains can do this so effortlessly! For images labeled as <b>3</b>, eventhough the specific values of each pixel is very different from one image to the next.
-                        The particular light-sensitive cells in your eye that are firing when you see the <b>3</b> at the first column are very different from the <b>3s</b> firing at third column. But something in that crazy smart
-                        visual cortex of yours resolves these as representing the same idea while at the same time recognizing other images as their own distinct ideas. However, for computers to
+                        <p><span class="first-letter">T</span>hese are numbers from 0 to 9. They are rendered at an extremly low resolution of 28 by 28 pixels. It is surpricing and crazy how your brain has no trouble recognizing them and brains can do this so effortlessly! For images labeled as <b>3</b>, eventhough the specific values of each pixel is very different from one image to the next.
+                        Although most of the pixels firing when you see the <b>3</b> at the first column are very different from the <b>3s</b> firing at third column. But something in that smart
+                        visual cortex of yours resolves these as representing the same idea while at the same time recognizing other images as their own distinct classifications.</p> 
+                        <p>However, for computers to
                         take in a grid of 28 by 28 pixels like these and outputs a single number between 0 and 9 telling you what it think the digit is, the task goes from comically trivial and dauntingly difficult.
                         Unless you have been living under a rock, it is unnecessary to motivate the relevance and importance of machine learning algorithms to the present into the future.</p>
 
@@ -389,8 +385,7 @@
                                 Neural networks have achieved the state of the art in more domains than k-NN. 
                         (This doesn’t necessarily mean neural networks will work better on your particular problem, but empirically neural networks are effective in many settings.)
                         There are more theoretical guarantees for k-NN than for neural nets, although as we know there is a large gap between the theoretical and 
-                        empirical performance of neural networks. (Aside: it is a good idea to carefully examine the assumptions made by theoretical work in machine learning, 
-                        to make sure that they are reasonable for the problem being approached.)
+                        empirical performance of neural networks. 
                             </li>
                             <li>
                                 Once a neural network is trained, the training data is no longer needed to produce new predictions. This is obviously not the case with k-NN.
@@ -407,6 +402,14 @@
                         <p>Both algorithms performed similar with the default hyperparameters (4 nearest neighbors, and 0 hidden layer neural net). However, by adding one hidden layer with relu activation, 
                             more promissing training accruacy are shown. Therefore, in this particular example of handwritten digit recognition, neural network with one additional layer performs better. </p>
                         <p>
+                            Sources by
+                            <a href="https://www.quora.com/How-does-KNN-classification-compare-to-classification-by-neural-networks">Garrett Thomas</a>
+                            &middot; 
+                            <a href="https://medium.com/analytics-vidhya/k-nearest-neighbors-knn-8f027ae1228f">Shubhang Agrawal</a>
+                            &middot;
+                            <a href="https://towardsdatascience.com/first-neural-network-for-beginners-explained-with-code-4cfd37e06eaf">Arnx</a>
+                        </p>
+                        <p>
                              Images by
                             <a href="https://towardsdatascience.com/machine-learning-basics-with-the-k-nearest-neighbors-algorithm-6a6e71d01761#:~:text=Summary,that%20data%20in%20use%20grows.">Harrison</a>
                             &middot; 
@@ -414,6 +417,7 @@
                             &middot;
                             <a href="https://medium.com/@toprak.mhmt/activation-functions-for-deep-learning-13d8b9b20e">Toprak</a>
                         </p>
+                        
 
                     </div>
                 </div>
